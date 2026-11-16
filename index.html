@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#20372e">
+    <meta name="description" content="Encontre receitas do mundo inteiro pesquisando em português. Descubra pratos, ingredientes e modos de preparo.">
+    <title>Panela — Buscador de Receitas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="site-shell">
+        <header class="topbar">
+            <a class="brand" href="#inicio" aria-label="Panela - início">
+                <span class="brand-symbol" aria-hidden="true">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M8 17.5h24l-2.2 13.1a3 3 0 0 1-3 2.4H13.2a3 3 0 0 1-3-2.4L8 17.5Z" fill="currentColor"/>
+                        <path d="M5.5 17.5h29M12 12c-2-2.1 1.4-3.1 0-5M20 12c-2-2.1 1.4-3.1 0-5M28 12c-2-2.1 1.4-3.1 0-5" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"/>
+                    </svg>
+                </span>
+                <span class="brand-name">panela<span>.</span></span>
+            </a>
+
+            <div class="topbar-right">
+                <span class="topbar-caption">IDEIAS QUE VIRAM COMIDA BOA</span>
+                <span class="api-status"><span class="status-dot"></span> buscas em tempo real</span>
+            </div>
+        </header>
+
+        <main id="inicio">
+            <section class="hero">
+                <div class="hero-copy">
+                    <div class="eyebrow"><span class="eyebrow-line"></span> UM MUNDO DE SABORES</div>
+                    <h1>Uma boa ideia<br>começa <em>na cozinha.</em></h1>
+                    <p>Descubra pratos, explore ingredientes e encontre aquela receita que vai deixar todo mundo querendo mais.</p>
+                    <a class="hero-link" href="#busca">Encontrar minha próxima receita <span aria-hidden="true">↘</span></a>
+                </div>
+
+                <div class="hero-art" aria-label="Fotografia de uma refeição com ingredientes frescos">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="Salada colorida com ingredientes frescos" fetchpriority="high">
+                    <div class="hero-photo-shade"></div>
+                    <div class="hero-sticker">
+                        <span class="sticker-star" aria-hidden="true">✳</span>
+                        <span>Feito com<br><strong>curiosidade</strong></span>
+                    </div>
+                    <div class="hero-photo-label">SABOR QUE APROXIMA</div>
+                </div>
+                <div class="hero-decoration hero-decoration-one"></div>
+                <div class="hero-decoration hero-decoration-two"></div>
+            </section>
+
+            <div class="content-wrap">
+                <section class="search-panel" id="busca" aria-labelledby="searchTitle">
+                    <div class="search-heading">
+                        <div>
+                            <div class="section-kicker">VAMOS DESCOBRIR?</div>
+                            <h2 id="searchTitle">O que tem na sua cozinha?</h2>
+                            <p>Pesquise em português. A gente cuida do resto.</p>
+                        </div>
+                        <div class="search-heading-icon" aria-hidden="true">
+                            <svg viewBox="0 0 64 64" fill="none">
+                                <path d="M20 10c-4 5-2 8 0 11M32 8c-4 5-2 8 0 11M44 10c-4 5-2 8 0 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M11 26h42l-4 25a5 5 0 0 1-5 4H20a5 5 0 0 1-5-4l-4-25Z" fill="currentColor" opacity=".16" stroke="currentColor" stroke-width="2.5"/>
+                                <path d="M7 26h50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <form id="searchForm" class="search-form">
+                        <div class="search-modes" role="group" aria-label="Tipo de pesquisa">
+                            <label class="mode-option">
+                                <input type="radio" name="searchMode" value="ingredient" checked>
+                                <span>Por ingrediente</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="searchMode" value="name">
+                                <span>Por nome do prato</span>
+                            </label>
+                        </div>
+
+                        <div class="search-row">
+                            <label class="search-input-wrap" for="searchInput">
+                                <svg class="search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                    <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/>
+                                    <path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                                </svg>
+                                <input id="searchInput" name="query" type="search" placeholder="Ex.: frango, batata, tomate..." autocomplete="off" maxlength="80" required>
+                            </label>
+                            <button class="btn btn-primary" id="searchButton" type="submit">
+                                <span>Buscar receitas</span>
+                                <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11M10 5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <button class="btn btn-random" id="randomButton" type="button" title="Descobrir uma receita aleatória">
+                                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M16 3h5v5M4 7h2.5c4.7 0 6.2 10 11 10H21M16 16l5 5v-5M4 17h2.5c1.7 0 2.9-1.3 4-3M14 10c1-1.7 2.1-3 3.5-3H21M16 3l5 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                <span class="random-label">Surpreenda-me</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="quick-searches">
+                        <span class="quick-label">IDEIAS RÁPIDAS</span>
+                        <button type="button" class="quick-chip" data-query="Frango" data-mode="ingredient">Frango</button>
+                        <button type="button" class="quick-chip" data-query="Batata" data-mode="ingredient">Batata</button>
+                        <button type="button" class="quick-chip" data-query="Arroz" data-mode="ingredient">Arroz</button>
+                        <button type="button" class="quick-chip" data-query="Bolo" data-mode="name">Bolo</button>
+                        <button type="button" class="quick-chip" data-query="Pizza" data-mode="name">Pizza</button>
+                    </div>
+                </section>
+
+                <section class="results-section" aria-labelledby="resultsTitle">
+                    <div class="results-heading">
+                        <div>
+                            <div class="section-kicker">SEU PRÓXIMO FAVORITO</div>
+                            <h2 id="resultsTitle">Descubra algo delicioso</h2>
+                            <p id="resultsSubtitle">Faça uma busca para encontrar receitas do mundo todo.</p>
+                        </div>
+                        <div class="results-count" id="resultsCount" aria-live="polite">0 receitas</div>
+                    </div>
+
+                    <div id="resultsStatus" class="results-status" role="status" aria-live="polite">
+                        <div class="empty-illustration" aria-hidden="true">
+                            <span class="empty-plate"></span>
+                            <span class="empty-leaf empty-leaf-one"></span>
+                            <span class="empty-leaf empty-leaf-two"></span>
+                            <span class="empty-spark">✳</span>
+                        </div>
+                        <h3>Sua próxima descoberta está a uma busca de distância.</h3>
+                        <p>Escolha um ingrediente ou procure pelo nome de um prato para começar.</p>
+                    </div>
+
+                    <div class="results-grid" id="resultsGrid" aria-live="polite"></div>
+                </section>
+
+                <section class="how-it-works" aria-label="Como funciona">
+                    <div class="how-item"><span class="how-number">01</span><span><strong>Pesquise em português</strong><small>Ingrediente ou nome do prato.</small></span></div>
+                    <span class="how-divider" aria-hidden="true"></span>
+                    <div class="how-item"><span class="how-number">02</span><span><strong>Descubra novos sabores</strong><small>Receitas reais de vários lugares.</small></span></div>
+                    <span class="how-divider" aria-hidden="true"></span>
+                    <div class="how-item"><span class="how-number">03</span><span><strong>Prepare do seu jeito</strong><small>Ingredientes e passo a passo.</small></span></div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <a class="brand footer-brand" href="#inicio"><span class="brand-symbol" aria-hidden="true">✳</span><span class="brand-name">panela<span>.</span></span></a>
+            <p>Receitas para descobrir, preparar e compartilhar.</p>
+            <span class="footer-credit">Dados de receitas: TheMealDB</span>
+        </footer>
+    </div>
+
+    <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="modal" id="recipeModal" aria-hidden="true">
+        <div class="modal-backdrop" data-close-modal></div>
+        <section class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button class="modal-close" id="closeModalButton" type="button" aria-label="Fechar detalhes da receita">×</button>
+            <div class="modal-content" id="modalContent"></div>
+        </section>
+    </div>
+</body>
+</html>
